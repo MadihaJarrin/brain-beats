@@ -1,6 +1,6 @@
-# React + Vite
+# Brain Beats
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To empower the next generation of innovators and thinkers by making coding and STEM education accessible, engaging, and fun through interactive and educational toys that inspire lifelong learning and creativity. 
 
 Currently, two official plugins are available:
 
