@@ -6,11 +6,15 @@ import Contact from "../pages/contact/Contact";
 import Login from "../pages/login/Login";
 import Registration from "../pages/registration/Registration";
 import Dashboard from "../layouts/dashboard/Dashboard";
+import ErrorPage from "../pages/error/ErrorPage";
+import DashboardPage from "../pages/dashboardPage/DashboardPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -36,7 +40,22 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element:
+            (
+                <PrivateRoute>
+                    <Dashboard />,
+
+                </PrivateRoute>
+            ),
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "/dashboardpage",
+                element:
+                    <DashboardPage />
+
+            }
+        ]
     }
 
 ]);

@@ -1,6 +1,21 @@
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase/firebase.config";
 
 export default function Navbar() {
+    const [signOut] = useSignOut(auth);
+    const [user] = useAuthState(auth);
+    // console.log(user.email);
+
+    const handleSignOut = async () => {
+
+        const success = await signOut();
+        if (success) {
+            alert('You are sign out');
+
+        }
+    }
+
     return (
         <div className="navbar bg-yellow-400">
             <div className="navbar-start">
@@ -42,12 +57,38 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={"/login"} className="btn mr-2">
-                    Login
-                </Link>
-                <Link to={"/register"} className="btn">
-                    Registration
-                </Link>            </div>
+
+                {
+                    !user?.email ?
+                        (
+                            <>
+                                <Link to={"/login"} className="btn mr-2">
+                                    Login
+                                </Link>
+                                <Link to={"/register"} className="btn">
+                                    Registration
+                                </Link>
+                            </>
+                        ) : (
+                            <div className="flex gap-2">
+                                <Link to={"/profile"}>
+
+                                    <div className="avatar placeholder">
+                                        <div className="bg-neutral text-neutral-content rounded-full w-12">
+                                            <span className="text-xs">Profile</span>
+                                        </div>
+                                    </div>
+
+                                </Link>
+                                <Link to={"/dashboard"} className="btn">Dashboard</Link>
+
+                                <Link onClick={handleSignOut} className="btn">LogOut</Link>
+                            </div>
+                        )
+                }
+
+
+            </div>
         </div>
     )
 }
