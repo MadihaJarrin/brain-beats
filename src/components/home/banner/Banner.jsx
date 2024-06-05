@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function Banner() {
     return (
@@ -8,7 +9,7 @@ export default function Banner() {
                     <h1 className="mb-5 text-5xl font-bold text-yellow-500 ">Learn & Grow!
                     </h1>
                     <p className="mb-5">To empower the next generation of innovators and thinkers by making coding and STEM education accessible, engaging, and fun through interactive and educational toys that inspire lifelong learning and creativity.</p>
-                    <button className="btn btn-warning shadow-lg shadow-orange-500/50 text-white uppercase">Explore</button>
+                    <Link to={'/product'} className="btn btn-warning shadow-lg shadow-orange-500/50 text-white uppercase">Explore</Link>
                 </div>
             </div>
         </div>

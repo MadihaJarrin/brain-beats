@@ -5,6 +5,9 @@ import { useEffect } from "react";
 import auth from "../../firebase/firebase.config";
 
 export default function Registration() {
+
+
+
     const [userInfo] = useAuthState(auth);
     const navigate = useNavigate()
 
@@ -22,8 +25,10 @@ export default function Registration() {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        const confirm_password = form.confirm_password.value;
+
         // console.log(email, password)
-        createUserWithEmailAndPassword(email, password)
+        createUserWithEmailAndPassword(email, password, confirm_password)
     }
 
 
@@ -56,26 +61,55 @@ export default function Registration() {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email"
+                            <input
+                                type="email"
+                                placeholder="email"
                                 name="email"
-                                className="input input-bordered" required />
+                                className="input input-bordered"
+                                required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password"
+                            <input
+                                type="password"
+                                placeholder="password"
+                                className="input input-bordered"
                                 name="password"
-                                className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                                required
+                            />
                         </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Confirm Password</span>
+                            </label>
+                            <input
+                                type="password"
+                                placeholder="confirm password"
+                                className="input input-bordered"
+                                name="confirm_password"
+                                required
+                            />
+                        </div>
+                        {/* {!passMatch && (
+                            <div className="my-2">
+                                <p className="text-red-500">Passwords do not match!</p>
+                            </div>
+                        )} */}
+                        {
+                            error &&
+                            <p className="alert alert-error">Error: {error.message}</p>
+                        }
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Register</button>
                         </div>
-                        <div>
-                            <p className="text-center">Already Have an account? <Link to={'/login'} className="text-orange-400">Login</Link ></p>
+                        <div className="m-2">
+                            <p className="text-center">
+                                Already Have An Account?
+
+                                <Link to={'/register'} className="m-2 text-orange-600  shadow-inner  bg-origin-content p-2 rounded-md shadow-orange-600				"> Login </Link >
+                            </p>
                         </div>
                     </form>
                     <div className="mx-8 mb-5">

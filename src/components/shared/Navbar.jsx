@@ -1,6 +1,7 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase/firebase.config";
+import { CiWavePulse1 } from "react-icons/ci";
 
 export default function Navbar() {
     const [signOut] = useSignOut(auth);
@@ -17,7 +18,7 @@ export default function Navbar() {
     }
 
     return (
-        <div className="navbar bg-yellow-400">
+        <div className="navbar bg-yellow-300 p-4">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -31,6 +32,9 @@ export default function Navbar() {
                             <Link to={'/dashboard'}>Dashboard</Link>
                         </li> */}
                         <li>
+                            <Link to={'/product'}>Products</Link>
+                        </li>
+                        <li>
                             <Link to={'/about'}>About</Link>
                         </li>
                         <li>
@@ -38,7 +42,8 @@ export default function Navbar() {
                         </li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-4xl font-mono italic">Brain-Beats</a>
+                <p className="btn btn-ghost text-4xl text-rose-950	font-mono italic">Brain-Beats <CiWavePulse1 />
+                </p>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -48,6 +53,9 @@ export default function Navbar() {
                     {/* <li>
                         <Link to={'/dashboard'}>Dashboard</Link>
                     </li> */}
+                    <li>
+                        <Link to={'/product'}>Products</Link>
+                    </li>
                     <li>
                         <Link to={'/about'}>About</Link>
                     </li>
