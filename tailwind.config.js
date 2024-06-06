@@ -1,15 +1,23 @@
 import daisyui from "daisyui"
+import filters from "tailwindcss-filters";
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-  ], theme: {
-    extend: {},
+  ],
+  theme: {
+    extend: {
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(5px)',
+      },
+    },
   },
   plugins: [
     daisyui,
+    filters,
   ],
   daisyui: {
     themes: ["light"],
