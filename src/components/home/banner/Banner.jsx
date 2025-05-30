@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-// import bannerImg from ""
+import bannerImg from "../../../assets/images/Home/cover.png"
 
 export default function Banner() {
     return (
         <div className="hero min-h-screen"
-            style={{ backgroundImage: 'url(https://img.freepik.com/free-vector/stem-logo-with-kids-cartoon-character-education-icon-elements_1308-62171.jpg?t=st=1717526018~exp=1717529618~hmac=44d5a94690fdc6cafc9691171ff8e61ecabe2ac2bfb8071c6806a25b31b05cb5&w=1380)' }}>
+            style={{ backgroundImage: `url(${bannerImg})` }}>
             <div className="hero-overlay bg-opacity-75"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
